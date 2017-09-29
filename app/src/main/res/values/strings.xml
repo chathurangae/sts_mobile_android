@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">STS</string>
+
+    <string name="hint_text_email">Enter your email address</string>
+    <string name="hint_text_password">Enter your password</string>
+    <string name="text_forgot_password">Forgot Password?</string>
+    <string name="text_sign_in">Sign In</string>
+    <string name="error_message_email">Please enter your email.</string>
+    <string name="error_message_password">Please enter your password.</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

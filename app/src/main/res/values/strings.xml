@@ -11,5 +11,10 @@
         android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="button_text_select_location">SelectLocation</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
+
 
 </resources>

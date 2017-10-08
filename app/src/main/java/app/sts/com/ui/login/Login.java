@@ -13,6 +13,7 @@ import app.sts.com.helpers.PreferenceManager;
 import app.sts.com.helpers.ValidationHelper;
 import app.sts.com.model.AuthenticationResponse;
 import app.sts.com.ui.BaseActivity;
+import app.sts.com.ui.MapsActivity;
 import app.sts.com.ui.ShellActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +43,8 @@ public class Login extends BaseActivity {
 
     @OnClick(R.id.sign_in_button)
     public void login() {
-        userLogin();
+        goToLandingPage();
+        //userLogin();
     }
 
     private void userLogin() {
@@ -79,7 +81,7 @@ public class Login extends BaseActivity {
     }
 
     private void goToLandingPage() {
-        launchActivity(ShellActivity.class);
+        launchActivity(MapsActivity.class);
         Login.this.overridePendingTransition(R.anim.animation, R.anim.animation2);
         this.finish();
     }

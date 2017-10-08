@@ -13,7 +13,6 @@
         android:normalScreens="true"
         android:smallScreens="true"
         android:xlargeScreens="true"/>
-
     <application
         android:name=".helpers.AppController"
         android:allowBackup="true"
@@ -33,6 +32,13 @@
         </activity>
         <activity android:name=".ui.ShellActivity">
         </activity>
+        <activity
+            android:name=".ui.MapsActivity"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
     </application>
 
 </manifest>

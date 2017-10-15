@@ -51,6 +51,7 @@
             android:textColorHint="@color/silver_chalice_light"
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="10dp"
+            android:imeOptions="actionNext"
             android:textSize="18sp"/>
 
 
@@ -68,6 +69,7 @@
             android:textColor="@color/silver_chalice_light"
             android:textColorHint="@color/silver_chalice_light"
             android:drawableStart="@drawable/ic_lock"
+            android:imeOptions="actionDone"
             android:drawablePadding="10dp"
             android:textSize="18sp"/>
 

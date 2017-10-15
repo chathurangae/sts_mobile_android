@@ -43,4 +43,10 @@ public class PreferenceManager {
         editor.putString(key, json);
         editor.apply();
     }
+
+    public void signOut() {
+        SharedPreferences.Editor editor = this.preferences.edit();
+        editor.remove(USER_KEY);
+        editor.apply();
+    }
 }

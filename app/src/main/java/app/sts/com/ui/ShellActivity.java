@@ -1,6 +1,6 @@
 package app.sts.com.ui;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,6 +16,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import app.sts.com.R;
+import app.sts.com.helpers.PreferenceManager;
+import app.sts.com.model.User;
+import app.sts.com.ui.login.Login;
 import app.sts.com.ui.map.MapFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +51,7 @@ public class ShellActivity extends BaseActivity implements NavigationView
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+        User currentUser = new PreferenceManager(this).getUser();
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string
                 .navigation_drawer_open,
                 R.string.navigation_drawer_close);
@@ -55,8 +59,11 @@ public class ShellActivity extends BaseActivity implements NavigationView
         headerView = navigationView.getHeaderView(0);
         headerAvatar = ButterKnife.findById(headerView, R.id.header_profile_image);
         headerUsername = ButterKnife.findById(headerView, R.id.header_username);
+        headerUsername.setText(currentUser.getUserEmail());
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        loadMainContainer(new Home(), "Home");
     }
 
     public void loadMainContainer(Fragment fragment, String title) {
@@ -75,6 +82,10 @@ public class ShellActivity extends BaseActivity implements NavigationView
         int id = item.getItemId();
         switch (id) {
             case R.id.nav_logOut:
+                new PreferenceManager(this).signOut();
+                launchActivity(Login.class);
+                this.overridePendingTransition(R.anim.back_in, R.anim.back_out);
+                this.finish();
                 break;
             case R.id.item_one:
                 loadMainContainer(new MapFragment(), "MAP");

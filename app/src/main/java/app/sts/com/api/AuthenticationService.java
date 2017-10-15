@@ -1,15 +1,13 @@
 package app.sts.com.api;
 
 import app.sts.com.model.AuthenticationResponse;
+import app.sts.com.model.User;
 import io.reactivex.Observable;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface AuthenticationService {
 
-    @POST("authenticate")
-    @FormUrlEncoded
-    Observable<AuthenticationResponse> authenticate(@Field("username") String username
-            , @Field("password") String password);
+    @POST("user/login")
+    Observable<AuthenticationResponse> authenticate(@Body User userAuth);
 }

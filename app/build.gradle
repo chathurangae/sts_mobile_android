@@ -20,10 +20,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"http://52.25.107.3/api/\""
+            buildConfigField "String", "API_URL", "\"http://stsofficial.ga/stsapi/newfile/\""
         }
         release {
-            buildConfigField "String", "API_URL", "\"http://52.25.107.3/api/\""
+            buildConfigField "String", "API_URL", "\"http://stsofficial.ga/stsapi/newfile/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

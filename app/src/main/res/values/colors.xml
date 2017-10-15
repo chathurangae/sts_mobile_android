@@ -17,4 +17,7 @@
     <color name="azure_radiance">#0284FE</color>
 
     <color name="gray_dusty">#979797</color>
+
+    <color name="green_haze">#03AE3C</color>
+    <color name="green_ocean">#41BA7A</color>
 </resources>

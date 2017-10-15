@@ -16,7 +16,6 @@ import app.sts.com.helpers.ValidationHelper;
 import app.sts.com.model.AuthenticationResponse;
 import app.sts.com.model.User;
 import app.sts.com.ui.BaseActivity;
-import app.sts.com.ui.MapsActivity;
 import app.sts.com.ui.ShellActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;

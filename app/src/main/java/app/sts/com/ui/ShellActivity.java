@@ -88,7 +88,8 @@ public class ShellActivity extends BaseActivity implements NavigationView
                 this.finish();
                 break;
             case R.id.item_one:
-                loadMainContainer(new MapFragment(), "MAP");
+                launchActivity(MapsActivity.class);
+                //loadMainContainer(new MapFragment(), "MAP");
                 break;
             default:
                 break;

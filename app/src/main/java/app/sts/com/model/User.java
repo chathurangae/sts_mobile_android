@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("id")
+    @SerializedName("user_id")
     private int userId;
 
     @SerializedName("user_email")
@@ -14,17 +14,18 @@ public class User {
     @SerializedName("user_name")
     private String userName;
 
-    @SerializedName("user_designation")
-    private String userDesignation;
+    @SerializedName("user_title_id")
+    private int userTitleId;
 
-    @SerializedName("user_address")
-    private String userAddress;
+    @SerializedName("user_address_id")
+    private int userAddressId;
 
-    private String password;
+    @SerializedName("user_password")
+    private String userPassword;
 
-    public User(String userEmail, String password) {
+    public User(String userEmail, String userPassword) {
         this.userEmail = userEmail;
-        this.password = password;
+        this.userPassword = userPassword;
     }
 
 
@@ -52,27 +53,27 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserDesignation() {
-        return userDesignation;
+    public int getUserTitleId() {
+        return userTitleId;
     }
 
-    public void setUserDesignation(String userDesignation) {
-        this.userDesignation = userDesignation;
+    public void setUserTitleId(int userTitleId) {
+        this.userTitleId = userTitleId;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public int getUserAddressId() {
+        return userAddressId;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setUserAddressId(int userAddressId) {
+        this.userAddressId = userAddressId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 }

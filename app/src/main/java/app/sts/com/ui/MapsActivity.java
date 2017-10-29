@@ -72,6 +72,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LatLng selectedLocation;
     private final int PLACE_PICKER_REQUEST = 1;
 
+    private static final LatLng START = new LatLng(6.9270786000000015, 79.861243);
+    private static final LatLng ONE = new LatLng(6.929363722978159, 79.86346911638975);
+    private static final LatLng TWO = new LatLng(6.9321045465907005, 79.86072689294814);
+    private static final LatLng THREE = new LatLng(6.9346330129629745, 79.85428120940924);
+
+    private static final LatLng END = new LatLng(6.936785800000002, 79.8525385);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     @OnClick(R.id.location_select_button)
@@ -137,6 +145,56 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 //        }
 //    }
+
+
+    private void addMultiplePoints() {
+        MarkerOptions options = new MarkerOptions();
+        options.position(selectedLocation);
+        options.position(END);
+        options.position(ONE);
+        options.position(TWO);
+        options.position(THREE);
+        mMap.addMarker(options);
+        String url = getMapsApiDirectionsUrl();
+        FetchUrl FetchUrl = new FetchUrl();
+        FetchUrl.execute(url);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(START,
+                13));
+        addMarkers();
+
+    }
+
+    private void addMarkers() {
+        if (mMap != null) {
+            mMap.addMarker(new MarkerOptions().position(selectedLocation)
+                    .title("Start Point"));
+            mMap.addMarker(new MarkerOptions().position(ONE)
+                    .title("one Point"));
+            mMap.addMarker(new MarkerOptions().position(TWO)
+                    .title("two Point"));
+            mMap.addMarker(new MarkerOptions().position(THREE)
+                    .title("three Point"));
+            mMap.addMarker(new MarkerOptions().position(END)
+                    .title("End Point"));
+        }
+    }
+
+    private String getMapsApiDirectionsUrl() {
+        String str_origin = "origin=" + selectedLocation.latitude + "," + selectedLocation.longitude;
+        String str_dest = "destination=" + END.latitude + "," + END.longitude;
+        String waypoints = "waypoints=optimize:true|"
+                + THREE.latitude + "," + THREE.longitude
+                + "|" + "|" + TWO.latitude + ","
+                + TWO.longitude + "|" + ONE.latitude + ","
+                + ONE.longitude;
+
+        String sensor = "sensor=false";
+        String params = str_origin + "&" + str_dest + "&" + waypoints + "&" + sensor;
+        String output = "json";
+        String url = "https://maps.googleapis.com/maps/api/directions/"
+                + output + "?" + params;
+        return url;
+    }
 
     private void setStartEndLocations(LatLng point) {
         if (MarkerPoints.size() > 1) {
@@ -312,16 +370,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mCurrLocationMarker.remove();
         }
         selectedLocation = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(selectedLocation);
-        markerOptions.title(getMarkerAddress(selectedLocation));
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+        //MarkerOptions markerOptions = new MarkerOptions();
+        //markerOptions.position(selectedLocation);
+        //markerOptions.title(getMarkerAddress(selectedLocation));
+        //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+        //mCurrLocationMarker = mMap.addMarker(markerOptions);
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
+       // mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
+        addMultiplePoints();
     }
 
     @Override
